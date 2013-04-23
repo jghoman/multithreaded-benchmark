@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'idea'
+
+sourceCompatability = 1.6
+version = '1.0-SNAPSHOT'
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+dependencies {
+  scalaTools 'org.scala-lang:scala-compiler:2.8.2' 
+  scalaTools 'org.scala-lang:scala-library:2.8.2'
+  testCompile 'junit:junit:4.10'
+
+}
+
