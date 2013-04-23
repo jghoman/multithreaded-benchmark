@@ -1,12 +1,13 @@
 package net.homan
 
-import org.junit.Test
+//import org.junit.Test
+import java.util.concurrent.{TimeUnit, LinkedBlockingQueue, CountDownLatch}
 import java.util.Random
-import java.util.concurrent.{CountDownLatch, TimeUnit, LinkedBlockingQueue}
-import scala.collection._
+import collection.{Map, mutable}
 
-class TestVeryParallel {
-  @Test
+class VeryParallel {
+
+  //@Test
   def parallel = {
     type Work = (Int, Int)
     val DIVISOR = 10
@@ -54,7 +55,7 @@ class TestVeryParallel {
 
     val work = (for {i <- 0 until NUM_WORKERS
                      j <- 0 until NUM_PIECES_OF_WORK_PER_WORKER
-                    } yield (i % NUM_WORKERS, j)).toList
+    } yield (i % NUM_WORKERS, j)).toList
 
     println("Work size = " + work.size)
 
@@ -104,5 +105,8 @@ class TestVeryParallel {
     println("Done with parallel work, elapsed time = %d milliseconds (%1.2f seconds)." format (stop, stop / 1000.0))
     println("-30-")
   }
+}
 
+object VeryParallel extends Application {
+  new VeryParallel().parallel
 }
