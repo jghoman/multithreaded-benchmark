@@ -8,10 +8,10 @@ import collection.{Map, mutable}
 class VeryParallel {
 
   //@Test
-  def parallel = {
+  def parallel(DIVISOR:Int) = {
     type Work = (Int, Int)
-    val DIVISOR = 10
-    val NUM_PIECES_OF_WORK_PER_WORKER = 10000 / DIVISOR
+    //val DIVISOR = 10
+    val NUM_PIECES_OF_WORK_PER_WORKER = 10000 /10 // DIVISOR
     val NUM_WORKERS = 2000 / DIVISOR
     val QUEUE_SIZE = 1000 / DIVISOR
     val NUM_CONSUMERS = 5
@@ -108,5 +108,7 @@ class VeryParallel {
 }
 
 object VeryParallel extends Application {
-  new VeryParallel().parallel
+  override def main(args:Array[String]) = {
+    new VeryParallel().parallel(args(0).toInt)
+  }
 }

@@ -5,9 +5,9 @@ import java.util.Random
 import java.util.concurrent.{TimeUnit, LinkedBlockingDeque, CountDownLatch}
 //import org.junit.Assert._
 
-class Current {
+class Current(DIVISOR:Int) {
   type Work = (Int, Int)
-  val DIVISOR = 10
+  //val DIVISOR = 10
   val NUM_PIECES_OF_WORK_PER_WORKER = 10000 / DIVISOR
   val NUM_WORKERS = 2000 / DIVISOR
   val QUEUE_SIZE = 1000 / DIVISOR
@@ -101,5 +101,7 @@ class Current {
 }
 
 object Current extends Application {
-  new Current().current
+  override def main(args:Array[String]) {
+    new Current(args(0).toInt).current
+  }
 }
